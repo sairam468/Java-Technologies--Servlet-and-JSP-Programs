@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy package &apos;servletChoice&apos; to &apos;Servlet2_RequestDispatcher_program/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;sai&apos;&#x0D;&#x0A;- Destination element: &apos;Servlet2_RequestDispatcher_program/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;sai/src/main/java/servletChoice&apos;" description="Copy package" destination="=Servlet2_RequestDispatcher_program/src\/main\/java" element1="/src\/main\/java&lt;servletChoice" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1726205907734" version="1.0"/>
-</session>
