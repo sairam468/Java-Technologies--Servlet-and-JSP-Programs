@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Place Order</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px #000;
+        }
+        h2 {
+            text-align: center;
+        }
+        .details {
+            margin-bottom: 20px;
+        }
+        .details label {
+            font-weight: bold;
+            display: block;
+        }
+        .btn {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Review Your Order</h2>
+        <div class="details">
+            <h3>Shipping Address:</h3>
+            <label>Name:</label>
+            <p><%= request.getParameter("name") %></p>
+            <label>Address:</label>
+            <p><%= request.getParameter("address") %></p>
+            <label>City:</label>
+            <p><%= request.getParameter("city") %></p>
+            <label>State:</label>
+            <p><%= request.getParameter("state") %></p>
+            <label>Zip Code:</label>
+            <p><%= request.getParameter("zipcode") %></p>
+            <label>Country:</label>
+            <p><%= request.getParameter("country") %></p>
+        </div>
+        <div class="details">
+            <h3>Payment Information:</h3>
+            <label>Payment Type:</label>
+            <p><%= request.getParameter("paymentType") %></p>
+            <label>Card Number (if applicable):</label>
+            <p><%= request.getParameter("cardNumber") != null ? request.getParameter("cardNumber") : "N/A" %></p>
+        </div>
+        <form action="buyAllBooks" method="post">
+            <input type="hidden" name="name" value="<%= request.getParameter("name") %>">
+            <input type="hidden" name="address" value="<%= request.getParameter("address") %>">
+            <input type="hidden" name="city" value="<%= request.getParameter("city") %>">
+            <input type="hidden" name="state" value="<%= request.getParameter("state") %>">
+            <input type="hidden" name="zipcode" value="<%= request.getParameter("zipcode") %>">
+            <input type="hidden" name="country" value="<%= request.getParameter("country") %>">
+            <input type="hidden" name="paymentType" value="<%= request.getParameter("paymentType") %>">
+            <input type="hidden" name="cardNumber" value="<%= request.getParameter("cardNumber") != null ? request.getParameter("cardNumber") : "" %>">
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+</body>
+</html>

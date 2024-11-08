@@ -1,0 +1,123 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Order Payment</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px #000;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function updateInputField() {
+            var paymentType = document.getElementById("paymentType").value;
+            var dynamicField = document.getElementById("dynamicField");
+            var label = document.getElementById("dynamicFieldLabel");
+
+            dynamicField.value = "";
+            if (paymentType === "Credit Card" || paymentType === "Debit Card") {
+                label.textContent = "Card Number:";
+                dynamicField.placeholder = "Enter card number";
+                dynamicField.type = "text";
+                dynamicField.required = true;
+                dynamicField.style.display = "block";
+                label.style.display = "block";
+            } else if (paymentType === "Net Banking") {
+                label.textContent = "Net Banking Username:";
+                dynamicField.placeholder = "Enter username";
+                dynamicField.type = "text";
+                dynamicField.required = true;
+                dynamicField.style.display = "block";
+                label.style.display = "block";
+            } else if (paymentType === "UPI") {
+                label.textContent = "UPI ID:";
+                dynamicField.placeholder = "Enter UPI ID";
+                dynamicField.type = "text";
+                dynamicField.required = true;
+                dynamicField.style.display = "block";
+                label.style.display = "block";
+            } else {
+                dynamicField.style.display = "none";
+                label.style.display = "none";
+                dynamicField.required = false;
+            }
+        }
+        window.onload = updateInputField;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Details</h2>
+        <form action="PlaceOrder.jsp" method="post">
+            <%-- Hidden inputs to pass data from previous page --%>
+            <input type="hidden" name="name" value="<%= request.getParameter("name") %>">
+            <input type="hidden" name="address" value="<%= request.getParameter("address") %>">
+            <input type="hidden" name="city" value="<%= request.getParameter("city") %>">
+            <input type="hidden" name="state" value="<%= request.getParameter("state") %>">
+            <input type="hidden" name="zipcode" value="<%= request.getParameter("zipcode") %>">
+            <input type="hidden" name="country" value="<%= request.getParameter("country") %>">
+            
+            <div class="form-group">
+                <label for="paymentType">Payment Type:</label>
+                <select id="paymentType" name="paymentType" required onchange="updateInputField()">
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Net Banking">Net Banking</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="dynamicFieldLabel" for="dynamicField">Card Number:</label>
+                <input type="text" id="dynamicField" name="dynamicField" placeholder="Enter card number">
+            </div>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+</body>
+</html>
