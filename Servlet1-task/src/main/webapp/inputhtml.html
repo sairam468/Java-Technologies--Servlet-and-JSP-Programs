@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>KLM Shopping Mall</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+		form {
+			width: 50%;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"],
+		input[type="number"],
+		input[type="email"] {
+			width: 100%;
+			height: 40px;
+			margin-bottom: 20px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="text-align: center; margin-bottom: 20px;">KLM Shopping Mall</h1>
+	<form action="dis" method="post">
+		<label>Customer Name:</label>
+		<input type="text" name="cusname" required>
+		<label>Customer Phone Number:</label>
+		<input type="number" maxlength="10" name="phno" required>
+		<label>Customer City:</label>
+		<input type="text" name="city" required>
+		<label>Customer Mail Id:</label>
+		<input type="email" name="mail" required>
+		<input type="submit" value="Display">
+	</form>
+</body>
+</html>
+
